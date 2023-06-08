@@ -14,6 +14,6 @@ export class AppController {
 
   @Get('get-current-user')
   async getCurrentUser() {
-    return this.appService.getCurrentUser()
+    return this.appService.getCurrentUser();
   }
 }
