@@ -7,9 +7,15 @@ export class AppService {
     @Inject('AUTH_SERVICE') private authService: ClientProxy
   ) {}
   
+  async postUser() {
+    return this.authService.send({
+      cmd: 'post-user',
+    }, {});
+  }
+  
   async getUser() {
     return this.authService.send({
-      cmd: 'get-user',
+      cmd: 'get-users',
     }, {});
   }
   
