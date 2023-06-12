@@ -6,7 +6,8 @@ import { Repository } from 'typeorm';
 @Injectable()
 export class AuthService {
   constructor(
-    @InjectRepository(UserEntity) private readonly userRepository: Repository<UserEntity>
+    @InjectRepository(UserEntity)
+    private readonly userRepository: Repository<UserEntity>,
   ) {}
 
   async getUsers() {

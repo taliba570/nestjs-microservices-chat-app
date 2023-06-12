@@ -1,15 +1,18 @@
-import { Controller, Get, Inject, Post } from '@nestjs/common';
+import { Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller()
 export class AppController {
-  constructor(
-    private readonly appService: AppService
-  ) {}
+  constructor(private readonly appService: AppService) {}
 
   @Get()
   async getUser() {
     return this.appService.getUser();
+  }
+
+  @Get('presence')
+  async getPresence() {
+    return this.appService.getPresence();
   }
 
   @Get('get-current-user')
