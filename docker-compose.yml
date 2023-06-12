@@ -12,6 +12,7 @@ services:
       - '15672:15672'
     env_file:
       - .env
+
   auth:
     build:
       context: ./
@@ -25,6 +26,20 @@ services:
       - .:/usr/src/app #any change to base folder should be reflected
       - /usr/src/app/node_modules
     command: npm run start:dev auth # overrides CMD from docker file
+      
+  presence:
+    build:
+      context: ./
+      dockerfile: ./apps/presence/Dockerfile
+    env_file:
+      - .env
+    depends_on:
+      - rabbitmq
+      - postgres
+    volumes:
+      - .:/usr/src/app #any change to base folder should be reflected
+      - /usr/src/app/node_modules
+    command: npm run start:dev presence # overrides CMD from docker file
 
   api:
     build:
@@ -37,6 +52,7 @@ services:
     depends_on:
       - rabbitmq
       - auth
+      - presence
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
