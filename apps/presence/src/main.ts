@@ -1,6 +1,8 @@
 import { NestFactory } from '@nestjs/core';
-import { SharedService } from '@app/shared';
 import { ConfigService } from '@nestjs/config';
+
+import { SharedService } from '@app/shared';
+
 import { PresenceModule } from './presence.module';
 
 async function bootstrap() {
